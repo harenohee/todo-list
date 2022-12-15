@@ -1,0 +1,33 @@
+.todo-card {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+  width: 200px;
+  height: 200px;
+  /* 백그라운드 컬러와 동일하게 */
+  /* 보더 픽셀을 없앴더니 호버될 때마다 깨져서 꼭 픽셀을 주어야겠다.. */
+  border: 3px solid #f6f6c9;
+  background-color: #f6f6c9;
+  border-radius: 15px;
+}
+.todo-card:hover {
+  border: 3px solid #ffacc7;
+}
+.todo-card-content {
+  font-size: 18px;
+  word-wrap: break-word;
+}
+.todo-card-title {
+  font-size: 15px;
+  font-weight: bold;
+  word-wrap: break-word;
+}
+.todo-card-btn {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
