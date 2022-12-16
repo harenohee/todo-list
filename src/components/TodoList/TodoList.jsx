@@ -14,16 +14,9 @@ export default function TodoList({ isActive, todos, setTodos }) {
       {/* done 상태 ->  isDone: true 인 것만 보여줌 */}
       <StDivTodoCards>
         {todos
-          .filter((t) => isActive === !t.isDone)
+          .filter((t) => t.isDone === !isActive)
           .map((t) => (
-            <Todo
-              todo={t.todo}
-              isDone={t.isDone}
-              title={t.title}
-              setTodos={setTodos}
-              key={t.id}
-              id={t.id}
-            ></Todo>
+            <Todo item={t} setTodos={setTodos} isActive={isActive}></Todo>
           ))}
       </StDivTodoCards>
     </div>

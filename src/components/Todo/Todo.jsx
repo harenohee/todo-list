@@ -2,49 +2,60 @@ import React from "react";
 import Button from "../Button/Button";
 // import "./style.css";
 import styled from "styled-components";
-export default function Todo({ todo, title, isDone, id, setTodos }) {
+export default function Todo({ item, setTodos, isActive }) {
   //todo 제거 함수
   const deleteTodo = () => {
-    setTodos((prev) => prev.filter((t) => t.id !== id));
+    setTodos((prev) => prev.filter((t) => t.id !== item.id));
   };
 
   // cancelTodo와 doneTodo에 setTodos((prev) =>{} 왜 중괄호를 쓰면 에러가 날까!
   //setTodo안에는 하나의 리턴만 받는다.
   //   todo 취소 함수
-  const cancelTodo = () => {
-    setTodos((prev) => {
-      return prev.map((t) => {
-        if (t.id === id) {
-          return { ...t, isDone: false };
-        }
-        return t;
-      });
-    });
-  };
+  // const cancelTodo = () => {
+  //   setTodos((prev) => {
+  //     return prev.map((t) => {
+  //       if (t.id === item.id) {
+  //         return { ...t, isDone: false };
+  //       }
+  //       return t;
+  //     });
+  //   });
+  // };
   // todo 완료 함수
-  const doneTodo = () => {
+  // const doneTodo = () => {
+  //   setTodos((prev) => {
+  //     return prev.map((t) => {
+  //       if (t.id === item.id) {
+  //         return { ...t, isDone: true };
+  //       }
+  //       return t;
+  //     });
+  //   });
+  // };
+  // isDone의 상태를 바꿔줘야 합니당
+  const handleIsActiveChange = () => {
     setTodos((prev) => {
       return prev.map((t) => {
-        if (t.id === id) {
-          return { ...t, isDone: true };
-        }
-        return t;
+        // 클릭한 그 todo가 맞는지 체크
+        if (t.id === item.id) {
+          // 구조분해할당으로 isDone의 값만 바꿔줄 수 있습니당.
+          return { ...t, isDone: !t.isDone };
+        } else return t;
       });
     });
   };
-
   return (
-    <StLiTodoCard id={id} key={id}>
+    <StLiTodoCard id={item.id} key={item.id}>
       {/* 상세페이지로 이동하는 부분 */}
       <span>상세보기</span>
-      <StTodoCardTitle>{title}</StTodoCardTitle>
-      <StTodoCardContent>{todo}</StTodoCardContent>
+      <StTodoCardTitle>{item.title}</StTodoCardTitle>
+      <StTodoCardContent>{item.todo}</StTodoCardContent>
       <StDivTodoCardBtn>
         <Button handleClick={deleteTodo} value="삭제"></Button>
-        {isDone ? (
-          <Button handleClick={cancelTodo} value="취소" />
+        {isActive ? (
+          <Button handleClick={handleIsActiveChange} value="취소" />
         ) : (
-          <Button handleClick={doneTodo} value="완료" />
+          <Button handleClick={handleIsActiveChange} value="완료" />
         )}
       </StDivTodoCardBtn>
     </StLiTodoCard>

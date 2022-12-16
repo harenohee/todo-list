@@ -39,6 +39,7 @@ export const getTodoId = (payload) => {
 };
 
 //INITIAL STATE
+// 객체가 아닌 배열 상태이다.
 const initialTodos = [
   {
     id: uuid(),
@@ -67,7 +68,18 @@ const todos = (state = initialTodos, action) => {
     case ADD_TODO:
       return {
         //여기서 스테이트 변경이 일어날까요..
-        // setTodo((prev)=>...prev, action.payload);
+        ...state,
+        todos: [...state.todo, action.payload],
+      };
+    case DELETE_TODO:
+      return {
+        ...state,
+        todos: state.todos.filter((item) => item.id !== action.payload),
+      };
+    case CHANGE_STATUS_TODO:
+      return {
+        ...state,
+        todos: state.todos.map((item) => {}),
       };
     default:
       return state;
