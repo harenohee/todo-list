@@ -1,11 +1,22 @@
 import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
-import "./App.css";
+// import "./App.css";
+import styled from "styled-components";
 // import Header from "./components/Header/Header";
 import Form from "./components/Form/Form";
 import TodoList from "./components/TodoList/TodoList";
 import Layout from "./shared/Layout";
+
 function App() {
+  const StDiv = styled.div`
+    max-width: 1200px;
+    min-width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+  `;
   const initialTodos = [
     {
       id: uuid(),
@@ -31,7 +42,7 @@ function App() {
 
   return (
     <Layout>
-      <div className="App">
+      <StDiv>
         {/* 헤더 부분 */}
         {/* <Header>TO DO List</Header> */}
         {/* 투두리스트 입력 부분 */}
@@ -48,7 +59,7 @@ function App() {
             setTodos={setTodos}
           ></TodoList>
         </div>
-      </div>
+      </StDiv>
     </Layout>
   );
 }

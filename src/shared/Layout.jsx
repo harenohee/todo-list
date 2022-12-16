@@ -1,9 +1,9 @@
-import { Children } from "react";
+// import { Children } from "react";
 
 const HeaderStyle = {
   width: "100%",
-  background: "black",
-  height: "50px",
+  background: "#EC5E97",
+  height: "45px",
   display: "flex",
   alignItems: "center",
   paddingLeft: "20px",
@@ -13,9 +13,9 @@ const HeaderStyle = {
 
 const FooterStyle = {
   width: "100%",
-  height: "50px",
+  height: "30px",
   display: "flex",
-  background: "black",
+  background: "#EC5E97",
   color: "white",
   alignItems: "center",
   justifyContent: "center",
@@ -40,7 +40,7 @@ function Header() {
 const Footer = () => {
   return (
     <div style={{ ...FooterStyle }}>
-      <span>내꺼야</span>
+      <span>harenohee</span>
     </div>
   );
 };

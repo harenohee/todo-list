@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
 import Button from "../Button/Button";
-import "./style.css";
+import styled from "styled-components";
+// import "./style.css";
 
 export default function Form({ setTodos }) {
   //인풋으로 추가되는 타이틀
@@ -42,29 +43,115 @@ export default function Form({ setTodos }) {
   };
 
   return (
-    <div className="form-container">
-      <form className="form" onSubmit={addTodo}>
-        <label className="form-label">오늘은</label>
-        <label className="label-text">제목</label>
-        <input
-          className="form-input"
+    <div>
+      <StForm onSubmit={addTodo}>
+        <StFormLabel>오늘은</StFormLabel>
+        <StLabelText>제목</StLabelText>
+        <StFormInput
+          // className="form-input"
           type="text"
           id="todo-title"
           name="todo-title"
           onChange={handleChangeTitle}
           value={todoTitle}
-        ></input>
-        <label className="label-text">내용</label>
-        <input
-          className="form-input"
+        ></StFormInput>
+        <StLabelText>내용</StLabelText>
+        <StFormInput
+          // className="form-input"
           type="text"
           id="todo-input"
           name="todo-input"
           onChange={handleChangeContent}
           value={todoContent}
-        ></input>
+        ></StFormInput>
         <Button value="하기"></Button>
-      </form>
+      </StForm>
     </div>
   );
 }
+
+const StForm = styled.form`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const StFormLabel = styled.label`
+  position: relative;
+  right: 40px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #ffb9b9;
+`;
+const StLabelText = styled.label`
+  margin-right: 10px;
+  color: #ffb9b9;
+  font-weight: 200px;
+`;
+const StFormInput = styled.input`
+  outline: none;
+  padding-left: 10px;
+  position: relative;
+
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #ffddd2;
+  margin-right: 30px;
+  width: auto;
+  height: 30px;
+  font-size: 20px;
+
+  &:focus,
+  :hover {
+    border-color: #ff8dc7;
+  }
+`;
+// .form-input:focus,
+// :hover {
+//   border-color: #ff8dc7;
+// }
+
+// .form {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+// .form-label {
+//   position: relative;
+//   right: 40px;
+//   font-size: 22px;
+//   font-weight: bold;
+//   color: #ffb9b9;
+/* padding-right: 40px; */
+// }
+// .form-input {
+//   outline: none;
+//   padding-left: 10px;
+//   position: relative;
+
+//   border-style: solid;
+//   border-radius: 10px;
+//   border-color: #ffddd2;
+//   margin-right: 30px;
+//   width: auto;
+//   height: 30px;
+//   font-size: 20px;
+// }
+// .label-text {
+//   margin-right: 10px;
+//   color: #ffb9b9;
+//   font-weight: 200px;
+// }
+// .form-btn {
+//   background-color: #ffddd2;
+//   border-style: none;
+//   border: 2px none;
+//   border-radius: 5px;
+//   color: white;
+//   font-size: 14px;
+//   font-weight: bold;
+//   cursor: pointer;
+//   margin: 3px;
+// }
+// .form-btn:hover {
+//   border: 2px solid #ffacc7;
+// }
