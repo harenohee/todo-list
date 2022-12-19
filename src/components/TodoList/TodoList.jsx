@@ -1,10 +1,10 @@
 import React from "react";
 import Todo from "../Todo/Todo";
-// import "./style.css";
-import styled from "styled-components";
-export default function TodoList({ isActive, todos, setTodos }) {
-  // const isActive = name === "active" ? true : false;
+import { useSelector } from "react-redux";
+import { StDivTodoCards, StH2TodoTitle } from "./style";
 
+export default function TodoList({ isActive }) {
+  const todos = useSelector((state) => state.todos);
   return (
     <div>
       <StH2TodoTitle>
@@ -16,20 +16,9 @@ export default function TodoList({ isActive, todos, setTodos }) {
         {todos
           .filter((t) => t.isDone === !isActive)
           .map((t) => (
-            <Todo item={t} setTodos={setTodos} isActive={isActive}></Todo>
+            <Todo item={t} key={t.id} isActive={isActive}></Todo>
           ))}
       </StDivTodoCards>
     </div>
   );
 }
-
-const StH2TodoTitle = styled.h2`
-  color: #ffacc7;
-  margin-top: 50px;
-`;
-const StDivTodoCards = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-`;

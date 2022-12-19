@@ -11,7 +11,7 @@ const Stbtn = styled.button`
   height: 40px;
   border-style: none;
   border: 2px none;
-  background-color: #ffddd2;
+  background-color: #f1d1e4;
   border-radius: 5px;
   color: white;
   font-size: 14px;
@@ -19,6 +19,6 @@ const Stbtn = styled.button`
   cursor: pointer;
   margin: 3px;
   &:hover {
-    border: 2px solid #ffacc7;
+    border: 2px solid #ec5e97;
   }
 `;
